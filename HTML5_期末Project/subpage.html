@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="Tooplate">
+
+        <title>HDance Studio</title>
+
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="css/magnific-popup.css" rel="stylesheet">
+
+        <link href="css/tooplate-waso-strategy.css" rel="stylesheet">
+        
+<!--
+
+Tooplate 2130 Waso Strategy
+
+https://www.tooplate.com/view/2130-waso-strategy
+
+Free Bootstrap 5 HTML Template
+
+-->
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+
+    function GetUrlVar(VarName) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regexS = "[\\?&]" + VarName + "=([^&#]*)";
+        var regex = new RegExp(regexS);
+        var results = regex.exec(window.location.href);
+        if (results == null)
+            return "";
+        else
+            return results[1];
+    }
+
+    var n = decodeURIComponent(GetUrlVar('id'));
+    var queryStr = "select * where A=" + n;
+
+    // https://developers.google.com/chart/interactive/docs/quick_start
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {'packages':['corechart']});
+    // Set a callback to run when the Google Visualization API is loaded.	
+	google.charts.setOnLoadCallback(init);
+	
+	function init() {
+        // 這個例子使用的試算表是 https://docs.google.com/spreadsheets/d/1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk/copy
+        // 將上述試算表另存副本後，你要在自己的雲端硬碟將該試算表設定成[知道連結的使用者都能查看]。
+        // 然後讓程式讀取 https://docs.google.com/spreadsheets/d/瀏覽器網址列上的網址擷取序號部分/gviz/tq?sheet=工作表名稱
+        // 也就是將下列的 1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk 更換成自己的檔案序號，以及最後部分指讀取哪個工作表。
+        var url =
+        'https://docs.google.com/spreadsheets/d/1fYPs3GkHMHDST3XntKoOOUNF25jHLVaPHxoTH9WIHsM/gviz/tq?sheet=子頁面';
+        var query = new google.visualization.Query(url);
+        query.setQuery(queryStr);
+        query.send(processSheetsData);
+	}	
+	
+	function processSheetsData(response) {
+        var data = response.getDataTable();
+        var columns = data.getNumberOfColumns();
+        var rows = data.getNumberOfRows();
+        var str = "";
+
+        for (r = 0; r < rows; r++ ){
+            str = str + `<main>
+
+                            <section class="hero section-hero section-padding">
+                                <div class="container">
+                                    <div class="row">
+
+                                        <div class="col-lg-6 col-12 text-center mx-auto">
+                                            <div class="section-hero-text">
+                                                <small class="small-title text-warning">${data.getFormattedValue(r,1)}</small>
+
+                                                <h1 class="text-white">${data.getFormattedValue(r,2)}</h1>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </section>
+
+
+                            <section class="projects section-padding">
+                                <div class="container">
+                                    <div class="row">
+
+                                        <div class="col-lg-10 col-12 mb-5">
+                                            <h2 class="mb-3">${data.getFormattedValue(r,3)}</h2>
+
+                                            <p>${data.getFormattedValue(r,4)}</p>
+
+                                        </div>
+
+                                        <div class="col-lg-6 col-12 mb-5">
+                                            <img src="${data.getFormattedValue(r,5)}" class="img-fluid projects-image" alt="">
+
+                                            <h2 class="mt-3 mb-1">${data.getFormattedValue(r,6)}</h2>
+
+                                            <p>${data.getFormattedValue(r,7)}</p>
+
+                                        </div>
+
+                                        <div class="col-lg-6 col-12 mb-5">
+                                            <iframe width="630" height="630" src="${data.getFormattedValue(r,8)}" class="rounded" alt="..." title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                                            <h2 class="mt-3 mb-1">${data.getFormattedValue(r,9)}</h2>
+
+                                            <p>${data.getFormattedValue(r,10)}</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                        </main>`;
+            }
+            
+        document.getElementById("inner").innerHTML = str;
+        }
+
+    </script>
+
+    </head>
+    
+    <body class="projects-detail-page" id="section_1">
+        
+        <header class="site-header">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-3 col-md-5 col-7">
+                        <p class="text-white mb-0">
+                            <i class="bi-clock site-header-icon me-2"></i>
+                            Mon-Sat 10:00-22:00
+                        </p>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-5">
+                        <p class="text-white mb-0">
+                            <a href="tel: 240-480-9600" class="text-white">
+                                <i class="bi-telephone site-header-icon me-2"></i>
+                                0933-123-123
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-12 ms-auto">
+                        <ul class="social-icon">
+                            <li><a href="https://www.facebook.com/NCHUHD" class="social-icon-link bi-facebook"></a></li>
+
+                            <li><a href="https://www.instagram.com/nchu.hd/" class="social-icon-link bi-instagram"></a></li>
+
+                            <li><a href="https://www.youtube.com/@nchuhd5614" class="social-icon-link bi-youtube"></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar navbar-expand-lg bg-white shadow-lg">
+            <div class="container">
+
+                <a href="index.html" class="navbar-brand">HDance <span class="text-danger">Studio</span></a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#section_1"><small class="small-title"><strong class="text-warning">01</strong></small> 首頁</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#section_2"><small class="small-title"><strong class="text-warning">02</strong></small> 關於</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#section_3"><small class="small-title"><strong class="text-warning">03</strong></small> 風格</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#section_4"><small class="small-title"><strong class="text-warning">04</strong></small> 聯絡我們</a>
+                        </li>
+                    </ul>
+                <div>
+                        
+            </div>
+        </nav>
+
+        <div id="inner"></div>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+                        
+                    <div class="col-lg-6 col-12">
+                        <div class="site-footer-wrap d-flex align-items-center">
+                            <p class="copyright-text mb-0 me-4">Copyright © 2036 Waso Strategy Co., Ltd.</p>
+
+                            <ul class="social-icon">
+                                <li><a href="https://www.facebook.com/NCHUHD" class="social-icon-link bi-facebook"></a></li>
+
+                                <li><a href="https://www.instagram.com/nchu.hd/" class="social-icon-link bi-instagram"></a></li>
+
+                                <li><a href="https://www.youtube.com/@nchuhd5614" class="social-icon-link bi-youtube"></a></li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-12">
+                    	<p class="copyright-text mb-0 me-4">Waso HTML Template is designed by <a href="https://www.tooplate.com/" target="_blank">Tooplate</a></p>
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/magnific-popup-options.js"></script>
+        <script src="js/click-scroll.js"></script>
+        <script src="js/custom.js"></script>
+
+    </body>
+</html>

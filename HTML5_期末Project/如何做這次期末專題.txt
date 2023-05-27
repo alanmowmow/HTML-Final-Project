@@ -1,0 +1,5 @@
+1. 利用json api來連結痞客幫的網頁，並使用搜尋功能來搜尋街舞的一些文章 ( 網頁對應到了解更多的街舞實事與知識 )
+2. 表單回應 --> 連結：https://docs.google.com/forms/d/e/1FAIpQLSdeWOwjwhgBr_eQuXx51jz8Q-cmk39_v8qhTC5bsQzjT9C3bg/viewform?usp=pp_url&entry.658718623=%E6%AF%9B%E6%AF%9B&entry.1184792919=4109029001@gmail.com&entry.842476699=%E6%88%91%E6%83%B3%E8%B7%B3%E8%88%9E%EF%BC%81
+3. 留言板
+4. 用卡片的方式呈現重複的程式碼 ( 包含試算表 )
+5. 用導航 & 地圖
